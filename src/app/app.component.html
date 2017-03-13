@@ -1,26 +1,22 @@
-<md-card fxLayout='row' fxLayoutAlign="center">
+<md-card fxLayout='row' fxLayoutAlign="center" (keyup.enter)="search(filter.value)">
   <md-card-title fxFlex="20" fxlayoutalign="center center">Search</md-card-title>
   <md-input-container fxflex="20" fxlayoutalign="center center">
-    <input mdInput placeholder="seaech" value="">
+    <input mdInput placeholder="seaech" value="" #filter>
   </md-input-container>
-  <button md-button routerLink=".">Search</button>
+  <button md-button (click)="search(filter.value)">Search</button>
 </md-card>
 
 <div fxLayout='row'>
   <md-card fxFlex="30">
     <md-list>
       <md-list-item>
-        <md-icon md-list-avatar>book</md-icon>
         <h4 md-line>Repositories</h4>
-        <span>2222</span>
+        <span>{{totalRepo}}</span>
       </md-list-item>
      <md-list-item>
-        <md-icon md-list-avatar>code</md-icon>
         <h4 md-line>Commits</h4>
       </md-list-item>
      <md-list-item>
-        <i class="mdi mdi-checkbox-blank"></i>
-        <md-icon md-list-avatar>face</md-icon>
         <h4 md-line>Users</h4>
       </md-list-item>
     </md-list>
@@ -28,7 +24,6 @@
     <md-list>
       <h3 md-subheader>Languages</h3>
       <md-list-item *ngFor="let language of languages">
-        <md-icon md-list-avatar>folder</md-icon>
         <h4 md-line>{{language.name}}</h4>
         <span> {{language.quantity}} </span>
       </md-list-item>
@@ -36,29 +31,19 @@
   </md-card>
 
   <md-card fxFlex="70">
-    <h2>Showing 2,921,976 available repository results </h2>
-    <form>
-    <md-select placeholder="" [(ngModel)]="selectedValue" name="sort">
-      <md-option *ngFor="let sort of sortValues" [value]="sort.value">
-        {{sort.viewValue}}
-      </md-option>
-    </md-select>
+    <h2>Showing {{totalRepo}} available repository results </h2>
+    <form class="sort">
+      <md-select placeholder="" [(ngModel)]="selectedValue" name="sort">
+        <md-option *ngFor="let sort of sortValues" [value]="sort.value">
+          {{sort.viewValue}}
+        </md-option>
+      </md-select>
 
-    <p> Selected value: {{selectedValue}} </p>
+      <p> Selected value: {{selectedValue}} </p>
     </form>
 
-    <md-card class="example-card">
-      <md-card-header>
-        <md-card-title>repo name</md-card-title>
-        <md-card-subtitle>description</md-card-subtitle>
-      </md-card-header>
-      <md-card-actions>
-        <span>langulage</span>
-        <button md-button><md-icon md-list-avatar>stars</md-icon>112</button>
-        <button md-button><md-icon md-list-avatar>stars</md-icon>112</button>
-        <span md-line> 20.20.1017 </span>
-      </md-card-actions>
-    </md-card>
+    <app-repo-list *ngIf="repos" [repos]="repos"></app-repo-list>
+
   </md-card>
 </div>
 

@@ -1,0 +1,9 @@
+<md-card class="" *ngFor="let repo of repos">
+  <!--<pre>{{repo | json}}</pre>-->
+  <md-card-title><a [href]="repo.html_url">{{repo.full_name}}</a></md-card-title>
+  <md-card-subtitle>{{repo.description}}</md-card-subtitle>
+  <span>{{repo.language}}</span>
+  <button md-button><i class="fa fa-star" aria-hidden="true"></i> {{repo.stargazers_count}}</button>
+  <button md-button><i class="fa fa-code-fork" aria-hidden="true"></i> {{repo.forks_count}}</button>
+  <span md-line> 20.20.1017 </span>
+</md-card>
