@@ -1,7 +1,7 @@
 <md-card fxLayout='row' fxLayoutAlign="center" (keyup.enter)="search(filter.value)">
   <md-card-title fxFlex="20" fxlayoutalign="center center">Search</md-card-title>
   <md-input-container fxflex="20" fxlayoutalign="center center">
-    <input mdInput placeholder="seaech" value="" #filter>
+    <input mdInput placeholder="search" value="" #filter>
   </md-input-container>
   <button md-button (click)="search(filter.value)">Search</button>
 </md-card>
@@ -42,7 +42,7 @@
       <p> Selected value: {{selectedValue}} </p>
     </form>
 
-    <app-repo-list *ngIf="repos" [repos]="repos"></app-repo-list>
+    <app-repo-list *ngIf="repos" [repos]="repos" [totalRepo]="totalRepo"></app-repo-list>
 
   </md-card>
 </div>

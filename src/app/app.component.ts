@@ -49,6 +49,7 @@ export class AppComponent {
   public ngOnInit(): void {
     this.searchTerms$$
       .distinctUntilChanged()
+      .filter((term: string) => term.trim() !== '')
       .switchMap((term: string) => this._githubService.searchRepo(term))
       .subscribe((data: RepoResponse) => {
         this.repos = data.items as Repositories[];

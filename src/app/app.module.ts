@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import {Ng2PaginationModule} from 'ng2-pagination';
 import { AppComponent } from './app.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,7 +20,8 @@ import { RepoListComponent } from './repo-list/repo-list.component';
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule.forRoot(),
+    Ng2PaginationModule
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]

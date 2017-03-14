@@ -9,9 +9,15 @@ export class RepoListComponent implements OnInit {
   @Input()
   public repos: Repositories[];
 
+  @Input()
+  public totalRepo: number;
+
   public constructor() { }
 
   public ngOnInit(): void {
   }
 
+  public changePage(n: number): void {
+    console.log(n);
+  }
 }
