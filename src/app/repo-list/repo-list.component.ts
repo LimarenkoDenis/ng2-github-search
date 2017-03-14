@@ -18,6 +18,5 @@ export class RepoListComponent implements OnInit {
   }
 
   public changePage(n: number): void {
-    console.log(n);
   }
 }
